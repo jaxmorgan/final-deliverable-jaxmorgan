@@ -37,17 +37,17 @@ d3.csv('KSEA.csv').then(function(data) {
             d3.select(this.parentNode).select('circle').style("opacity", 0.5)
         })
     
-    // holder.append("text")
-    //     .attr("class", "name")
-    //     .text(function(d) { return d.actual_mean_temp})
-    //     .attr("opacity", 0)
-    //     .attr('transform', function(d) { return 'translate(' + scaleYear(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
-    //     .on('mouseover', function(d) {
-    //         d3.select(this.parentNode).select("text").style("opacity", 1)
-    //     })
-    //     .on('mouseout', function(d) {
-    //         d3.select(this.parentNode).select("text").style("opacity", 0)
-    //     })
+     holder.append("text")
+         .attr("class", "name")
+         .text(function(d) { return d.actual_mean_temp})
+         .attr("opacity", 0)
+         .attr('transform', function(d) { return 'translate(' + scaleYear(d.record_max_temp_year) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
+         .on('mouseover', function(d) {
+             d3.select(this.parentNode).select("text").style("opacity", 1)
+         })
+         .on('mouseout', function(d) {
+             d3.select(this.parentNode).select("text").style("opacity", 0)
+         })
      });
     //here's where my code stops
     
@@ -79,7 +79,7 @@ d3.csv('KSEA.csv').then(function(data) {
     svg.append('text')
         .attr('class', 'label')
         .attr('transform','translate(360,390)')
-        .text('Month');
+        .text('Record Max Temp Year');
     
     svg.append('g').attr('class', 'y axis')
         .attr('transform', 'translate(55,0)')
