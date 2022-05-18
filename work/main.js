@@ -1,6 +1,18 @@
+//parsing dates
+parseTime = d3.timeParse("%Y");
+
+var rowConverter = function(d) {
+    return {
+        date: parseTime(d.date),
+        actual_mean_temp: +d.actual_mean_temp
+    };
+}
+
 //Activity 2/3 code
 d3.csv('KSEA.csv').then(function(data) {
+
     //Activity 3 code
+
     var svgPlaceholder = d3.select("svg")
     var holder = svgPlaceholder.selectAll("g")
         .data(data)
@@ -10,16 +22,14 @@ d3.csv('KSEA.csv').then(function(data) {
         holder.append('circle')
         .attr("class", "player")
         .attr('r', 2)
-        .attr('cx', function(d, i) { return scaleYear(d.year);})
-        .attr('cy', function(d, i) { return scaleHomeruns(d.homeruns)})
+        .attr('cx', function(d, i) { 
+            console.log(d.record_max_temp_year)
+            return scaleYear(d.record_max_temp_year);})
+        .attr('cy', function(d, i) { 
+            console.log(d.actual_mean_temp)
+            return scaleDegree(d.actual_mean_temp)})
+
         .attr('opacity', 0.5)
-        .style("fill", function(d) {
-                if (d.rank <=3 && d.rank >= 1) {
-                    return "slateblue";
-                } else {
-                    return "teal";
-                }
-        })
         .on('mouseover', function(d) {
             d3.select(this.parentNode).select('circle').style("opacity", 1)
         })
@@ -27,38 +37,38 @@ d3.csv('KSEA.csv').then(function(data) {
             d3.select(this.parentNode).select('circle').style("opacity", 0.5)
         })
     
-    holder.append("text")
-        .attr("class", "name")
-        .text(function(d) { return d.name})
-        .attr("opacity", 0)
-        .attr('transform', function(d) { return 'translate(' + scaleYear(d.year) + ',' + scaleHomeruns(d.homeruns) + ')'})
-        .on('mouseover', function(d) {
-            d3.select(this.parentNode).select("text").style("opacity", 1)
-        })
-        .on('mouseout', function(d) {
-            d3.select(this.parentNode).select("text").style("opacity", 0)
-        })
-    });
+    // holder.append("text")
+    //     .attr("class", "name")
+    //     .text(function(d) { return d.actual_mean_temp})
+    //     .attr("opacity", 0)
+    //     .attr('transform', function(d) { return 'translate(' + scaleYear(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
+    //     .on('mouseover', function(d) {
+    //         d3.select(this.parentNode).select("text").style("opacity", 1)
+    //     })
+    //     .on('mouseout', function(d) {
+    //         d3.select(this.parentNode).select("text").style("opacity", 0)
+    //     })
+     });
     //here's where my code stops
     
     
     // **** Functions to call for scaled values ****
-    
-    function scaleYear(year) {
-        return yearScale(year);
+
+    function scaleYear(parseTime) {
+        return yearScale(parseTime);
     }
     
-    function scaleHomeruns(homeruns) {
-        return hrScale(homeruns);
+    function scaleDegree(actual_mean_temp) {
+        return degreeScale(actual_mean_temp);
     }
     
     // **** Code for creating scales, axes and labels ****
     
     var yearScale = d3.scaleLinear()
-        .domain([1870,2017]).range([60,700]);
+        .domain([1948,2015]).range([60,700]);
     
-    var hrScale = d3.scaleLinear()
-        .domain([0,75]).range([340,20]);
+    var degreeScale = d3.scaleLinear()
+        .domain([-20, 120]).range([340,20]);
     
     var svg = d3.select('svg');
     
@@ -69,18 +79,18 @@ d3.csv('KSEA.csv').then(function(data) {
     svg.append('text')
         .attr('class', 'label')
         .attr('transform','translate(360,390)')
-        .text('MLB Season');
+        .text('Month');
     
     svg.append('g').attr('class', 'y axis')
         .attr('transform', 'translate(55,0)')
-        .call(d3.axisLeft(hrScale));
+        .call(d3.axisLeft(degreeScale));
     
     svg.append('text')
         .attr('class', 'label')
         .attr('transform','translate(15,200) rotate(90)')
-        .text('Home Runs (HR)');
+        .text('Degrees (C)');
     
     svg.append('text')
         .attr('class', 'title')
         .attr('transform','translate(360,30)')
-        .text('Top 10 HR Leaders per MLB Season');
+        .text('Temperature');
