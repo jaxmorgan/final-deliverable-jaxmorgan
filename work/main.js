@@ -21,15 +21,21 @@ d3.csv('KSEA.csv').then(function(data) {
     
         holder.append('circle')
         .attr("class", "player")
-        .attr('r', 2)
+        .attr('r', 4)
         .attr('cx', function(d, i) { 
             console.log(d.record_max_temp_year)
             return scaleYear(d.record_max_temp_year);})
         .attr('cy', function(d, i) { 
             console.log(d.actual_mean_temp)
             return scaleDegree(d.actual_mean_temp)})
-
         .attr('opacity', 0.5)
+        .style("fill", function(d) {
+            if (d.actual_mean_temp <=60 && d.actual_mean_temp >= 40) {
+                return "slateblue";
+            } else {
+                return "red";
+            }
+        })
         .on('mouseover', function(d) {
             d3.select(this.parentNode).select('circle').style("opacity", 1)
         })
@@ -39,7 +45,7 @@ d3.csv('KSEA.csv').then(function(data) {
     
      holder.append("text")
          .attr("class", "name")
-         .text(function(d) { return d.actual_mean_temp})
+         .text(function(d) { return d.date})
          .attr("opacity", 0)
          .attr('transform', function(d) { return 'translate(' + scaleYear(d.record_max_temp_year) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
          .on('mouseover', function(d) {
