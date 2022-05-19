@@ -74,7 +74,7 @@ d3.csv('KSEAMONTHS.csv').then(function(data) {
         .domain([1,12]).range([60,700]);
     
     var degreeScale = d3.scaleLinear()
-        .domain([-20, 120]).range([340,20]);
+        .domain([0, 120]).range([340,20]);
     
     var svg = d3.select('svg');
     
