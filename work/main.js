@@ -9,7 +9,7 @@ var rowConverter = function(d) {
 }
 
 //Activity 2/3 code
-d3.csv('KSEA.csv').then(function(data) {
+d3.csv('KSEAUPDATE.csv').then(function(data) {
 
     //Activity 3 code
 
