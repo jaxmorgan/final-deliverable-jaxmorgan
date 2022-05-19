@@ -1,13 +1,3 @@
-//parsing dates
-parseTime = d3.timeParse("%Y");
-
-var rowConverter = function(d) {
-    return {
-        date: parseTime(d.date),
-        actual_mean_temp: +d.actual_mean_temp
-    };
-}
-
 //Activity 2/3 code
 d3.csv('KSEAMONTHS.csv').then(function(data) {
 
