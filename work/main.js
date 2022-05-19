@@ -30,7 +30,7 @@ d3.csv('KSEAMONTHS.csv').then(function(data) {
             return scaleDegree(d.actual_mean_temp)})
         .attr('opacity', 0.5)
         .style("fill", function(d) {
-            if (d.actual_mean_temp <=60 && d.actual_mean_temp >= 40) {
+            if (d.actual_max_temp > d.average_max_temp) {
                 return "slateblue";
             } else {
                 return "red";
@@ -45,9 +45,9 @@ d3.csv('KSEAMONTHS.csv').then(function(data) {
     
      holder.append("text")
          .attr("class", "name")
-         .text(function(d) { return d.date})
+         .text(function(d) { return d.actual_mean_temp})
          .attr("opacity", 0)
-         .attr('transform', function(d) { return 'translate(' + scaleMonth(d.record_max_temp_year) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
+         .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
          .on('mouseover', function(d) {
              d3.select(this.parentNode).select("text").style("opacity", 1)
          })
