@@ -9,7 +9,7 @@ var rowConverter = function(d) {
 }
 
 //Activity 2/3 code
-d3.csv('KSEAUPDATE.csv').then(function(data) {
+d3.csv('KSEAMONTHS.csv').then(function(data) {
 
     //Activity 3 code
 
@@ -24,7 +24,7 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
         .attr('r', 4)
         .attr('cx', function(d, i) { 
             console.log(d.record_max_temp_year)
-            return scaleYear(d.record_max_temp_year);})
+            return scaleMonth(d.date);})
         .attr('cy', function(d, i) { 
             console.log(d.actual_mean_temp)
             return scaleDegree(d.actual_mean_temp)})
@@ -47,7 +47,7 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
          .attr("class", "name")
          .text(function(d) { return d.date})
          .attr("opacity", 0)
-         .attr('transform', function(d) { return 'translate(' + scaleYear(d.record_max_temp_year) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
+         .attr('transform', function(d) { return 'translate(' + scaleMonth(d.record_max_temp_year) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
          .on('mouseover', function(d) {
              d3.select(this.parentNode).select("text").style("opacity", 1)
          })
@@ -60,8 +60,8 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     
     // **** Functions to call for scaled values ****
 
-    function scaleYear(parseTime) {
-        return yearScale(parseTime);
+    function scaleMonth(parseTime) {
+        return monthScale(parseTime);
     }
     
     function scaleDegree(actual_mean_temp) {
@@ -70,8 +70,8 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     
     // **** Code for creating scales, axes and labels ****
     
-    var yearScale = d3.scaleLinear()
-        .domain([1948,2015]).range([60,700]);
+    var monthScale = d3.scaleLinear()
+        .domain([1,12]).range([60,700]);
     
     var degreeScale = d3.scaleLinear()
         .domain([-20, 120]).range([340,20]);
@@ -80,12 +80,12 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     
     svg.append('g').attr('class', 'x axis')
         .attr('transform', 'translate(0,345)')
-        .call(d3.axisBottom(yearScale).tickFormat(function(d){return d;}));
+        .call(d3.axisBottom(monthScale).tickFormat(function(d){return d;}));
     
     svg.append('text')
         .attr('class', 'label')
         .attr('transform','translate(360,390)')
-        .text('Record Max Temp Year');
+        .text('Month');
     
     svg.append('g').attr('class', 'y axis')
         .attr('transform', 'translate(55,0)')
@@ -94,7 +94,7 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     svg.append('text')
         .attr('class', 'label')
         .attr('transform','translate(15,200) rotate(90)')
-        .text('Degrees (C)');
+        .text('Degrees (F)');
     
     svg.append('text')
         .attr('class', 'title')
