@@ -70,10 +70,70 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     svg.append('g').attr('class', 'x axis')
         .attr('transform', 'translate(0,345)')
         .call(d3.axisBottom(monthScale).tickFormat(function(d){return d;}));
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(60,380)')
+        .text('Jan.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(115,380)')
+        .text('Feb.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(170,380)')
+        .text('Mar.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(227,380)')
+        .text('Apr.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(285,380)')
+        .text('May');
     
     svg.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(360,390)')
+        .attr('transform','translate(345,380)')
+        .text('Jun.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(402,380)')
+        .text('Jul.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(455,380)')
+        .text('Aug.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(515,380)')
+        .text('Sept.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(570,380)')
+        .text('Oct.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(627,380)')
+        .text('Nov.');
+
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(685,380)')
+        .text('Dec.');
+    
+    svg.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(360,410)')
         .text('Month');
     
     svg.append('g').attr('class', 'y axis')
