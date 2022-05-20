@@ -15,7 +15,7 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
         .attr('cy', function(d, i) { 
             console.log(d.actual_mean_temp)
             return scaleDegree(d.actual_mean_temp)})
-        .attr('opacity', 0.5)
+        .attr('opacity', 0.2)
          .style("fill", function(d) {
              if (d.differ == 'y') {
                  return "teal";
@@ -72,7 +72,7 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
         .call(d3.axisBottom(monthScale).tickFormat(function(d){return d;}));
 
     svg.append('text')
-        .attr('class', 'label')
+        .attr('class', 'label2')
         .attr('transform','translate(60,380)')
         .text('Jan.');
 
@@ -142,7 +142,7 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     
     svg.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(15,200) rotate(90)')
+        .attr('transform','translate(15,150) rotate(90)')
         .text('Degrees (F)');
     
     svg.append('text')
