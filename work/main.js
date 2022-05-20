@@ -16,13 +16,15 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
             console.log(d.actual_mean_temp)
             return scaleDegree(d.actual_mean_temp)})
         .attr('opacity', 0.5)
-        // .style("fill", function(d) {
-        //     if (d.actual_max_temp > d.average_max_temp) {
-        //         return "slateblue";
-        //     } else {
-        //         return "green";
-        //     }
-        // })
+         .style("fill", function(d) {
+             if (d.differ == 'y') {
+                 return "teal";
+             } else if (d.differ == 'z') {
+                 return "gray";
+             } else {
+                 return "pink";
+             }
+         })
         .on('mouseover', function(d) {
             d3.select(this.parentNode).select('circle').style("opacity", 1)
         })
@@ -58,10 +60,10 @@ d3.csv('KSEAUPDATE.csv').then(function(data) {
     // **** Code for creating scales, axes and labels ****
     
     var monthScale = d3.scaleLinear()
-        .domain([1,12]).range([60,700]);
+        .domain([1,12]).range([70,700]);
     
     var degreeScale = d3.scaleLinear()
-        .domain([0, 120]).range([340,20]);
+        .domain([5, 95]).range([340,20]);
     
     var svg = d3.select('svg');
     
