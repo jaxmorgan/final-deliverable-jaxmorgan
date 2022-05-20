@@ -33,17 +33,17 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
             d3.select(this.parentNode).select('circle').style("opacity", 0.5)
         })
     
-     holder.append("text")
-         .attr("class", "name")
-         .text(function(d) { return d.actual_mean_temp})
-         .attr("opacity", 0)
-         .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
-         .on('mouseover', function(d) {
-             d3.select(this.parentNode).select("text").style("opacity", 1)
-         })
-         .on('mouseout', function(d) {
-             d3.select(this.parentNode).select("text").style("opacity", 0)
-         })
+    //  holder.append("text")
+    //      .attr("class", "name")
+    //      .text(function(d) { return d.actual_mean_temp})
+    //      .attr("opacity", 0)
+    //      .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
+    //      .on('mouseover', function(d) {
+    //          d3.select(this.parentNode).select("text").style("opacity", 1)
+    //      })
+    //      .on('mouseout', function(d) {
+    //          d3.select(this.parentNode).select("text").style("opacity", 0)
+    //      })
 
          
     var svgPlaceholder2 = d3.select("svg")
@@ -56,10 +56,8 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
         .attr("class", "player")
         .attr('r', 4)
         .attr('cx', function(d, i) { 
-            console.log(d.record_max_temp_year)
             return scaleMonth2(d.date);})
         .attr('cy', function(d, i) { 
-            //console.log(d.actual_mean_temp)
             return scalePrecip(d.average_precipitation)})
         .attr('opacity', 0.2)
         .style("fill", function(d) {
@@ -71,24 +69,24 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
                  return "pink";
              }
          })
-        .on('mouseover', function(d) {
-            d3.select(this.parentNode).select('circle').style("opacity", 1)
-        })
-        .on('mouseout', function(d) {
-            d3.select(this.parentNode).select('circle').style("opacity", 0.5)
-        })
+        // .on('mouseover', function(d) {
+        //     d3.select(this.node).select('circle').style("opacity", 1)
+        // })
+        // .on('mouseout', function(d) {
+        //     d3.select(this.node).select('circle').style("opacity", 0.5)
+        // })
     
-    //  holder2.append("text")
-    //      .attr("class", "name")
-    //      .text(function(d) { return d.average_precipitation})
-    //      .attr("opacity", 0)
-    //      .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
-    //      .on('mouseover', function(d) {
-    //          d3.select(this.parentNode).select("text").style("opacity", 1)
-    //      })
-    //      .on('mouseout', function(d) {
-    //          d3.select(this.parentNode).select("text").style("opacity", 0)
-    //      })
+        holder2.append("text")
+          .attr("class", "name")
+          .text(function(d) { return d.average_precipitation})
+          .attr("opacity", 0)
+          .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
+          .on('mouseover', function(d) {
+              d3.select(this.parentNode).select("text").style("opacity", 1)
+          })
+         .on('mouseout', function(d) {
+              d3.select(this.parentNode).select("text").style("opacity", 0)
+          })
      });
     //here's where my code stops
     
@@ -263,82 +261,82 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
         .domain([1,12]).range([70,700]);
     
     var precipScale = d3.scaleLinear()
-        .domain([0, 1]).range([900,0]);
+        .domain([0, 0.5]).range([850,0]);
     
     var svg2 = d3.select('svg');
     
     svg2.append('g').attr('class', 'x axis')
-        .attr('transform', 'translate(0,900)')
+        .attr('transform', 'translate(0,850)')
         .call(d3.axisBottom(monthScale2).tickFormat(function(d){return d;}));
 
     svg2.append('text')
         .attr('class', 'label2')
-        .attr('transform','translate(60,800)')
+        .attr('transform','translate(60,935)')
         .text('Jan.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(115,800)')
+        .attr('transform','translate(115,935)')
         .text('Feb.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(170,800)')
+        .attr('transform','translate(170,935)')
         .text('Mar.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(227,800)')
+        .attr('transform','translate(227,935)')
         .text('Apr.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(285,800)')
+        .attr('transform','translate(285,935)')
         .text('May');
     
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(345,800)')
+        .attr('transform','translate(345,935)')
         .text('Jun.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(402,800)')
+        .attr('transform','translate(402,935)')
         .text('Jul.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(455,800)')
+        .attr('transform','translate(455,935)')
         .text('Aug.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(515,800)')
+        .attr('transform','translate(515,935)')
         .text('Sept.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(570,800)')
+        .attr('transform','translate(570,935)')
         .text('Oct.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(627,800)')
+        .attr('transform','translate(627,935)')
         .text('Nov.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(685,800)')
+        .attr('transform','translate(685,935)')
         .text('Dec.');
     
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(360,950)')
+        .attr('transform','translate(360,965)')
         .text('Month');
     
-    svg2.append('g').attr('class', 'y axis')
-        .attr('transform', 'translate(55,500)')
-        .call(d3.axisLeft(precipScale));
+    // svg2.append('g').attr('class', 'y axis')
+    //     .attr('transform', 'translate(55,100)')
+    //     .call(d3.axisLeft(precipScale));
     
     svg2.append('text')
         .attr('class', 'label')
