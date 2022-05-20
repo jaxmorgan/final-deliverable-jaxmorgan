@@ -44,6 +44,51 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
          .on('mouseout', function(d) {
              d3.select(this.parentNode).select("text").style("opacity", 0)
          })
+
+         
+    var svgPlaceholder2 = d3.select("svg")
+    var holder2 = svgPlaceholder2.selectAll("g")
+        // .data(data)
+        // .enter()
+        // .append("g")
+    
+    holder2.append('circle')
+        .attr("class", "player")
+        .attr('r', 4)
+        .attr('cx', function(d, i) { 
+            console.log(d.record_max_temp_year)
+            return scaleMonth2(d.date);})
+        .attr('cy', function(d, i) { 
+            //console.log(d.actual_mean_temp)
+            return scalePrecip(d.average_precipitation)})
+        .attr('opacity', 0.2)
+        .style("fill", function(d) {
+             if (d.differ == 'y') {
+                 return "teal";
+             } else if (d.differ == 'z') {
+                 return "gray";
+             } else {
+                 return "pink";
+             }
+         })
+        .on('mouseover', function(d) {
+            d3.select(this.parentNode).select('circle').style("opacity", 1)
+        })
+        .on('mouseout', function(d) {
+            d3.select(this.parentNode).select('circle').style("opacity", 0.5)
+        })
+    
+    //  holder2.append("text")
+    //      .attr("class", "name")
+    //      .text(function(d) { return d.average_precipitation})
+    //      .attr("opacity", 0)
+    //      .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
+    //      .on('mouseover', function(d) {
+    //          d3.select(this.parentNode).select("text").style("opacity", 1)
+    //      })
+    //      .on('mouseout', function(d) {
+    //          d3.select(this.parentNode).select("text").style("opacity", 0)
+    //      })
      });
     //here's where my code stops
     
@@ -153,53 +198,53 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
 
 
 //PRECIPTATION CHART
-precip = d3.csv('KSEAUPDATE.csv').then(function(dataset) {
+// precip = d3.csv('KSEAUPDATE.csv').then(function(dataset) {
 
-    var svgPlaceholder2 = d3.select("svg")
-    var holder2 = svgPlaceholder2.selectAll("g")
-        .data(dataset)
-        .enter()
-        .append("g")
+//     var svgPlaceholder2 = d3.select("svg")
+//     var holder2 = svgPlaceholder2.selectAll("g")
+//         .data(dataset)
+//         .enter()
+//         .append("g")
     
-        holder2.append('circle')
-        .attr("class", "player")
-        .attr('r', 4)
-        .attr('cx', function(d, i) { 
-            console.log(d.record_max_temp_year)
-            return scaleMonth2(d.date);})
-        .attr('cy', function(d, i) { 
-            //console.log(d.actual_mean_temp)
-            return scalePrecip(d.average_precipitation)})
-        .attr('opacity', 0.2)
-        .style("fill", function(d) {
-             if (d.differ == 'y') {
-                 return "teal";
-             } else if (d.differ == 'z') {
-                 return "gray";
-             } else {
-                 return "pink";
-             }
-         })
-        .on('mouseover', function(d) {
-            d3.select(this.parentNode).select('circle').style("opacity", 1)
-        })
-        .on('mouseout', function(d) {
-            d3.select(this.parentNode).select('circle').style("opacity", 0.5)
-        })
+//         holder2.append('circle')
+//         .attr("class", "player")
+//         .attr('r', 4)
+//         .attr('cx', function(d, i) { 
+//             console.log(d.record_max_temp_year)
+//             return scaleMonth2(d.date);})
+//         .attr('cy', function(d, i) { 
+//             //console.log(d.actual_mean_temp)
+//             return scalePrecip(d.average_precipitation)})
+//         .attr('opacity', 0.2)
+//         .style("fill", function(d) {
+//              if (d.differ == 'y') {
+//                  return "teal";
+//              } else if (d.differ == 'z') {
+//                  return "gray";
+//              } else {
+//                  return "pink";
+//              }
+//          })
+//         .on('mouseover', function(d) {
+//             d3.select(this.parentNode).select('circle').style("opacity", 1)
+//         })
+//         .on('mouseout', function(d) {
+//             d3.select(this.parentNode).select('circle').style("opacity", 0.5)
+//         })
     
-     holder2.append("text")
-         .attr("class", "name")
-         .text(function(d) { return d.average_precipitation})
-         .attr("opacity", 0)
-         .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
-         .on('mouseover', function(d) {
-             d3.select(this.parentNode).select("text").style("opacity", 1)
-         })
-         .on('mouseout', function(d) {
-             d3.select(this.parentNode).select("text").style("opacity", 0)
-         })
-     });
-    //here's where my code stops
+//      holder2.append("text")
+//          .attr("class", "name")
+//          .text(function(d) { return d.average_precipitation})
+//          .attr("opacity", 0)
+//          .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
+//          .on('mouseover', function(d) {
+//              d3.select(this.parentNode).select("text").style("opacity", 1)
+//          })
+//          .on('mouseout', function(d) {
+//              d3.select(this.parentNode).select("text").style("opacity", 0)
+//          })
+//      });
+//     //here's where my code stops
     
     
     // **** Functions to call for scaled values ****
@@ -218,12 +263,12 @@ precip = d3.csv('KSEAUPDATE.csv').then(function(dataset) {
         .domain([1,12]).range([70,700]);
     
     var precipScale = d3.scaleLinear()
-        .domain([0, 1]).range([340,0]);
+        .domain([0, 1]).range([900,0]);
     
     var svg2 = d3.select('svg');
     
     svg2.append('g').attr('class', 'x axis')
-        .attr('transform', 'translate(0,765)')
+        .attr('transform', 'translate(0,900)')
         .call(d3.axisBottom(monthScale2).tickFormat(function(d){return d;}));
 
     svg2.append('text')
@@ -288,11 +333,11 @@ precip = d3.csv('KSEAUPDATE.csv').then(function(dataset) {
     
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(360,830)')
+        .attr('transform','translate(360,950)')
         .text('Month');
     
     svg2.append('g').attr('class', 'y axis')
-        .attr('transform', 'translate(55,420)')
+        .attr('transform', 'translate(55,500)')
         .call(d3.axisLeft(precipScale));
     
     svg2.append('text')
