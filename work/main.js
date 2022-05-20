@@ -1,7 +1,4 @@
-//Activity 2/3 code
-d3.csv('KSEAMONTHS.csv').then(function(data) {
-
-    //Activity 3 code
+d3.csv('KSEAUPDATE.csv').then(function(data) {
 
     var svgPlaceholder = d3.select("svg")
     var holder = svgPlaceholder.selectAll("g")
@@ -19,13 +16,13 @@ d3.csv('KSEAMONTHS.csv').then(function(data) {
             console.log(d.actual_mean_temp)
             return scaleDegree(d.actual_mean_temp)})
         .attr('opacity', 0.5)
-        .style("fill", function(d) {
-            if (d.actual_max_temp > d.average_max_temp) {
-                return "slateblue";
-            } else {
-                return "red";
-            }
-        })
+        // .style("fill", function(d) {
+        //     if (d.actual_max_temp > d.average_max_temp) {
+        //         return "slateblue";
+        //     } else {
+        //         return "green";
+        //     }
+        // })
         .on('mouseover', function(d) {
             d3.select(this.parentNode).select('circle').style("opacity", 1)
         })
