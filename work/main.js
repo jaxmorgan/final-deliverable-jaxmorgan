@@ -17,7 +17,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
             //console.log(d.actual_mean_temp)
             return scaleDegree(d.actual_mean_temp)})
         .attr('opacity', 0.2)
-         .style("fill", function(d) {
+        .style("fill", function(d) {
              if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
@@ -33,24 +33,24 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
             d3.select(this.parentNode).select('circle').style("opacity", 0.5)
         })
     
-    //  holder.append("text")
-    //      .attr("class", "name")
-    //      .text(function(d) { return d.actual_mean_temp})
-    //      .attr("opacity", 0)
-    //      .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
-    //      .on('mouseover', function(d) {
-    //          d3.select(this.parentNode).select("text").style("opacity", 1)
-    //      })
-    //      .on('mouseout', function(d) {
-    //          d3.select(this.parentNode).select("text").style("opacity", 0)
-    //      })
+      holder.append("text")
+          .attr("class", "name")
+          .text(function(d) { return d.actual_mean_temp})
+          .attr("opacity", 0)
+          .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
+          .on('mouseover', function(d) {
+              d3.select(this.parentNode).select("text").style("opacity", 1)
+          })
+          .on('mouseout', function(d) {
+              d3.select(this.parentNode).select("text").style("opacity", 0)
+          })
 
          
     var svgPlaceholder2 = d3.select("svg")
     var holder2 = svgPlaceholder2.selectAll("g")
-        // .data(data)
-        // .enter()
-        // .append("g")
+         .data(data)
+         //.enter()
+         .append("g")
     
     holder2.append('circle')
         .attr("class", "player")
