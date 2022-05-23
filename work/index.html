@@ -5,10 +5,17 @@
     <title>Project Final Deliverable</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        h3 {text-align: center;}
+        div {text-align: center;}
+        script {text-align: center;}
+        svg {text-align: center;}
+    </style>
 </head>
 <body>
+    <h3>Temperature & Precipitation for Different Cities in the United States During 2014 & 2015</h3>
     <div id="main">
-        <svg width="800" height="1000" style="border: 1px solid #777;">
+        <svg width="800" height="900" style="border: 1px solid #777;">
         </svg>
         <div>
             <label for="categorySelect">Show Weather For: </label>
@@ -31,16 +38,16 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 <svg id="my_dataviz" height=300 width=450></svg>
 <script>
-
     // select the svg area
     var svg = d3.select("#my_dataviz")
     
     // Handmade legend
-    svg.append("circle").attr("cx", 25).attr("cy", 10).attr("r", 6).style("fill", "teal")
-    svg.append("circle").attr("cx", 25).attr("cy",40).attr("r", 6).style("fill", "gray")
-    svg.append("circle").attr("cx",25).attr("cy",70).attr("r", 6).style("fill", "pink")
-    svg.append("text").attr("x", 50).attr("y", 10).text("Seattle").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 50).attr("y", 40).text("Houston").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 50).attr("y", 70).text("New York").style("font-size", "15px").attr("alignment-baseline","middle")
+    svg.append("circle").attr("cx", 25).attr("cy", 10).attr("r", 6).style("fill", "teal").attr('transform', 'translate(320, 0)')
+    svg.append("circle").attr("cx", 25).attr("cy",40).attr("r", 6).style("fill", "gray").attr('transform', 'translate(320, 0)')
+    svg.append("circle").attr("cx",25).attr("cy",70).attr("r", 6).style("fill", "pink").attr('transform', 'translate(320, 0)')
+    svg.append("text").attr("x", 50).attr("y", 10).text("Seattle").style("font-size", "15px").attr("alignment-baseline","middle").attr('transform', 'translate(340, 0)')
+    svg.append("text").attr("x", 50).attr("y", 40).text("Houston").style("font-size", "15px").attr("alignment-baseline","middle").attr('transform', 'translate(340,0)')
+    svg.append("text").attr("x", 50).attr("y", 70).text("New York").style("font-size", "15px").attr("alignment-baseline","middle").attr('transform', 'translate(340,0)')
     </script>
+    </div>
 </html>
