@@ -220,67 +220,67 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     var svg2 = d3.select('svg');
     
     svg2.append('g').attr('class', 'x axis')
-        .attr('transform', 'translate(0,850)')
+        .attr('transform', 'translate(0,825)')
         .call(d3.axisBottom(monthScale2).tickFormat(function(d){return d;}));
 
     svg2.append('text')
         .attr('class', 'label2')
-        .attr('transform','translate(60,885)')
+        .attr('transform','translate(60,858)')
         .text('Jan.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(115,885)')
+        .attr('transform','translate(115,858)')
         .text('Feb.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(170,885)')
+        .attr('transform','translate(170,858)')
         .text('Mar.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(227,885)')
+        .attr('transform','translate(227,858)')
         .text('Apr.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(285,885)')
+        .attr('transform','translate(285,858)')
         .text('May');
     
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(345,885)')
+        .attr('transform','translate(345,858)')
         .text('Jun.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(402,885)')
+        .attr('transform','translate(402,858)')
         .text('Jul.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(455,885)')
+        .attr('transform','translate(455,858)')
         .text('Aug.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(515,885)')
+        .attr('transform','translate(515,858)')
         .text('Sept.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(570,885)')
+        .attr('transform','translate(570,858)')
         .text('Oct.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(627,885)')
+        .attr('transform','translate(627,858)')
         .text('Nov.');
 
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(685,885)')
+        .attr('transform','translate(685,858)')
         .text('Dec.');
     
     svg2.append('text')
