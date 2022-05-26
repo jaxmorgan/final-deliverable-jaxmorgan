@@ -64,7 +64,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .attr('opacity', 0.2)
         .style("fill", function(d) {
             if (d.differ == 'y') {
-                return "green";
+                return "teal";
             } else if (d.differ == 'z') {
                 return "gray";
             } else if (d.differ == 'x') {
@@ -74,7 +74,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
           
         holderTemp.append("text")
             .attr("class", "name")
-            .text(function(d) { return d.record_max_temp + ', ' + d.differ})
+            .text(function(d) { return d.record_max_temp + ', ' + d.city})
             .attr("opacity", 0)
             .attr('transform', function(d) { return 'translate(' + scaleMonthTemp(d.date) + ',' + scaleDegreeTemp(d.record_max_temp) + ')'})
             .on('mouseover', function(d) {
@@ -325,10 +325,6 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .attr('class', 'label')
         .attr('transform','translate(375,872)')
         .text('Month');
-    
-    // svg2.append('g').attr('class', 'y axis')
-    //     .attr('transform', 'translate(55,100)')
-    //     .call(d3.axisLeft(precipScale));
 
      svg2.append('g').attr('class', 'y-axis')
      .attr('transform', 'translate(55,461)')
@@ -345,9 +341,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .attr('transform','translate(360,475)')
         .text('Precipitation');
 
-
         //SECOND TEMP
-
         function scaleMonthTemp(parseTime) {
             return monthScaleTemp(parseTime);
         }
@@ -357,15 +351,15 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         }
                 
         var monthScaleTemp = d3.scaleLinear()
-            .domain([1,12]).range([70,700]);
+            .domain([1,12]).range([825,1400]);
             
         var degreeScaleTemp = d3.scaleLinear()
-            .domain([5, 95]).range([340,20]);
+            .domain([50, 115]).range([340,20]);
             
         var svgTemp = d3.select('svg');
     
         svgTemp.append('g').attr('class', 'x axis')
-            .attr('transform', 'translate(750,345)')
+            .attr('transform', 'translate(0,345)')
             .call(d3.axisBottom(monthScaleTemp).tickFormat(function(d){return d;}));
     
     svgTemp.append('text')
