@@ -351,10 +351,10 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         }
                 
         var monthScaleTemp = d3.scaleLinear()
-            .domain([1,12]).range([825,1400]);
+            .domain([1,12]).range([825,1500]);
             
         var degreeScaleTemp = d3.scaleLinear()
-            .domain([50, 115]).range([340,20]);
+            .domain([10, 115]).range([340,20]);
             
         var svgTemp = d3.select('svg');
     
@@ -364,62 +364,62 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     
     svgTemp.append('text')
         .attr('class', 'label2')
-        .attr('transform','translate(810,380)')
+        .attr('transform','translate(815,380)')
         .text('Jan.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(870,380)')
+        .attr('transform','translate(875,380)')
         .text('Feb.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(925,380)')
+        .attr('transform','translate(935,380)')
         .text('Mar.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(980,380)')
+        .attr('transform','translate(998,380)')
         .text('Apr.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1035,380)')
+        .attr('transform','translate(1055,380)')
         .text('May');
     
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1095,380)')
+        .attr('transform','translate(1120,380)')
         .text('Jun.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1155,380)')
+        .attr('transform','translate(1180,380)')
         .text('Jul.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1205,380)')
+        .attr('transform','translate(1240,380)')
         .text('Aug.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1265,380)')
+        .attr('transform','translate(1305,380)')
         .text('Sept.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1327,380)')
+        .attr('transform','translate(1370,380)')
         .text('Oct.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1380,380)')
+        .attr('transform','translate(1425,380)')
         .text('Nov.');
 
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1435,380)')
+        .attr('transform','translate(1490,380)')
         .text('Dec.');
     
     svgTemp.append('text')
