@@ -10,6 +10,7 @@
         div {text-align: center;}
         script {text-align: center;}
         svg {text-align: center;}
+        #my_dataviz {text-align: center;}
     </style>
 </head>
 <body>
@@ -34,7 +35,7 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="./main.js"></script>
 
-
+<div>
 <script src="https://d3js.org/d3.v4.js"></script>
 <svg id="my_dataviz" height=300 width=450></svg>
 <script>
@@ -42,12 +43,13 @@
     var svg = d3.select("#my_dataviz")
     
     // Handmade legend
-    svg.append("circle").attr("cx", 25).attr("cy", 10).attr("r", 6).style("fill", "teal").attr('transform', 'translate(320, 0)')
-    svg.append("circle").attr("cx", 25).attr("cy",40).attr("r", 6).style("fill", "gray").attr('transform', 'translate(320, 0)')
-    svg.append("circle").attr("cx",25).attr("cy",70).attr("r", 6).style("fill", "pink").attr('transform', 'translate(320, 0)')
-    svg.append("text").attr("x", 50).attr("y", 10).text("Seattle").style("font-size", "15px").attr("alignment-baseline","middle").attr('transform', 'translate(340, 0)')
-    svg.append("text").attr("x", 50).attr("y", 40).text("Houston").style("font-size", "15px").attr("alignment-baseline","middle").attr('transform', 'translate(340,0)')
-    svg.append("text").attr("x", 50).attr("y", 70).text("New York").style("font-size", "15px").attr("alignment-baseline","middle").attr('transform', 'translate(340,0)')
+    svg.append("circle").attr("cx", 25).attr("cy", 10).attr("r", 7).style("fill", "teal").attr('transform', 'translate(150, 0)')
+    svg.append("circle").attr("cx", 25).attr("cy",40).attr("r", 7).style("fill", "gray").attr('transform', 'translate(150, 0)')
+    svg.append("circle").attr("cx",25).attr("cy",70).attr("r", 7).style("fill", "pink").attr('transform', 'translate(150, 0)')
+    svg.append("text").attr("x", 50).attr("y", 10).text("Seattle").style("font-size", "20px").attr("alignment-baseline","middle").attr('transform', 'translate(170, 0)')
+    svg.append("text").attr("x", 50).attr("y", 40).text("Houston").style("font-size", "20px").attr("alignment-baseline","middle").attr('transform', 'translate(170,0)')
+    svg.append("text").attr("x", 50).attr("y", 70).text("New York").style("font-size", "20px").attr("alignment-baseline","middle").attr('transform', 'translate(170,0)')
     </script>
+    </div>
     </div>
 </html>

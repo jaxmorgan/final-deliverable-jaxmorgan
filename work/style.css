@@ -16,3 +16,7 @@ body {
 .y-axis-2 {
     color: white;
 }
+
+#my_dataviz {
+    font-size: 35px;
+}
