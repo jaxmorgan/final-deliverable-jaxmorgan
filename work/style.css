@@ -17,6 +17,6 @@ body {
     color: white;
 }
 
-#my_dataviz {
-    font-size: 35px;
+.title {
+    font-weight: 500;
 }

@@ -6,7 +6,7 @@
 // };2
 
 //TEMPERATURE CHART
-temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
+temp = d3.csv('citiesCSV.csv').then(function(data) {
 
     var svgPlaceholder = d3.select("svg")
     var holder = svgPlaceholder.selectAll("g")
@@ -29,7 +29,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
                  return "teal";
              } else if (d.differ == 'z') {
                  return "gray";
-             } else {
+             } else if (d.differ == 'x') {
                  return "pink";
              }
          })
@@ -42,7 +42,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     
       holder.append("text")
           .attr("class", "name")
-          .text(function(d) { return d.actual_mean_temp + ', ' + d.differ})
+          .text(function(d) { return d.actual_mean_temp + ', ' + d.city})
           .attr("opacity", 0)
           .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
           .on('mouseover', function(d) {
@@ -84,7 +84,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     
         holder2.append("text")
           .attr("class", "name")
-          .text(function(d) { return d.average_precipitation + ', ' + d.differ})
+          .text(function(d) { return d.average_precipitation + ', ' + d.city})
           .attr("opacity", 0)
           .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
           .on('mouseover', function(d) {
@@ -198,7 +198,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     svg.append('text')
         .attr('class', 'title')
         .attr('transform','translate(360,30)')
-        .text('Temperature');
+        .text('Temperature')
     
     // **** Functions to call for scaled values ****
 

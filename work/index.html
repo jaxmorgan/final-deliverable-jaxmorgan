@@ -10,23 +10,22 @@
         div {text-align: center;}
         script {text-align: center;}
         svg {text-align: center;}
+        p {text-align: center;}
         #my_dataviz {text-align: center;}
+        h1 {color: white;}
+        h6 {color: white}
     </style>
 </head>
 <body>
+    <h1> x </h1>
     <h3>Temperature & Precipitation for Different Cities in the United States During 2014 & 2015</h3>
+    <p>This interactive data visualization shows the average temperatures and precipitation logged on different days of each month of the year for three major US cities: Seattle, Houston, and New York. </p>
+    <p>Using this interactive data visualization, individuals can understand when and where they should travel around the US based on seasonality and their preferred climates as 
+        they relate specifically to temperature and precipitation.</p>
+    <p>The color teal represents Seattle, gray represents Houston, and pink represents New York.</p>
     <div id="main">
         <svg width="800" height="887" style="border: 1px solid #777;">
         </svg>
-        <div>
-            <label for="categorySelect">Show Weather For: </label>
-            <select class="custom-select" id="categorySelect" onchange="onCategoryChanged()">
-              <option selected value="all-cities">All Cities</option>
-              <option value="only-newyork">New York</option>
-              <option value="only-seattle">Seattle</option>
-              <option value="only-houston">Houston</option>
-            </select>
-        </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -49,7 +48,7 @@
     svg.append("text").attr("x", 50).attr("y", 10).text("Seattle").style("font-size", "20px").attr("alignment-baseline","middle").attr('transform', 'translate(170, 0)')
     svg.append("text").attr("x", 50).attr("y", 40).text("Houston").style("font-size", "20px").attr("alignment-baseline","middle").attr('transform', 'translate(170,0)')
     svg.append("text").attr("x", 50).attr("y", 70).text("New York").style("font-size", "20px").attr("alignment-baseline","middle").attr('transform', 'translate(170,0)')
-    </script>
-    </div>
-    </div>
+</script>
+</div>
+</div>
 </html>
