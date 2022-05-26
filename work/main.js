@@ -214,8 +214,11 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     var monthScale2 = d3.scaleLinear()
         .domain([1,12]).range([70,700]);
     
-    var precipScale = d3.scaleLinear()
-        .domain([0, 0.5]).range([850,80]);
+     var precipScale = d3.scaleLinear()
+         .domain([0, 0.5]).range([850,80]);
+     
+    var precipScale2 = d3.scaleLinear()
+        .domain([0.03, 0.24]).range([340,20]);
     
     var svg2 = d3.select('svg');
     
@@ -292,9 +295,10 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     //     .attr('transform', 'translate(55,100)')
     //     .call(d3.axisLeft(precipScale));
 
-    svg2.append('g').attr('class', 'y axis')
-    .attr('transform', 'translate(55,475)')
-    .call(d3.axisLeft(degreeScale));
+     svg2.append('g').attr('class', 'y-axis')
+     .attr('transform', 'translate(55,461)')
+     .call(d3.axisLeft(precipScale2))
+    // //.style (fill, "white")
     
     svg2.append('text')
         .attr('class', 'label')
