@@ -1,3 +1,10 @@
+// // A map with arrays for each category of letter sets
+// var citiesMapMap = {
+//     'all-letters': '123456789'.split(''),
+//     'only-consonants': '8'.split(''),
+//     'only-vowels': '9'.split('')
+// };2
+
 //TEMPERATURE CHART
 temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
 
@@ -35,7 +42,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     
       holder.append("text")
           .attr("class", "name")
-          .text(function(d) { return d.actual_mean_temp})
+          .text(function(d) { return d.actual_mean_temp + ', ' + d.differ})
           .attr("opacity", 0)
           .attr('transform', function(d) { return 'translate(' + scaleMonth(d.date) + ',' + scaleDegree(d.actual_mean_temp) + ')'})
           .on('mouseover', function(d) {
@@ -49,7 +56,6 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
     var svgPlaceholder2 = d3.select("svg")
     var holder2 = svgPlaceholder2.selectAll("g")
          .data(data)
-         //.enter()
          .append("g")
     
     holder2.append('circle')
@@ -58,15 +64,9 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
         .attr('cx', function(d, i) { 
             return scaleMonth2(d.date);})
         .attr('cy', function(d, i) { 
-            // if ('cy' > 700) {
-            //     style("opacity", 0)
-            // }
             return scalePrecip(d.average_precipitation)})
         .attr('opacity', 0.1)
         .style("fill", function(d) {
-            // if (d.average_precipitation < 0.02) {
-            //     opacity = 0;
-            // }
              if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
@@ -75,15 +75,16 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
                  return "pink";
              }
          })
-        // .on('mouseover', function(d) {
-        //     d3.select(this.node).select('circle').style("opacity", 1)
-        // })
-        // .on('mouseout', function(d) {
-        //     d3.select(this.node).select('circle').style("opacity", 0.5)
-        // })
+         .on('mouseover', function(d) {
+             d3.select(this.node).select('circle').style("opacity", 1)
+         })
+         .on('mouseout', function(d) {
+             d3.select(this.node).select('circle').style("opacity", 0.5)
+         })
     
         holder2.append("text")
-          .text(function(d) { return d.average_precipitation})
+          .attr("class", "name")
+          .text(function(d) { return d.average_precipitation + ', ' + d.differ})
           .attr("opacity", 0)
           .attr('transform', function(d) { return 'translate(' + scaleMonth2(d.date) + ',' + scalePrecip(d.average_precipitation) + ')'})
           .on('mouseover', function(d) {
@@ -112,7 +113,7 @@ temp = d3.csv('KSEAUPDATE.csv').then(function(data) {
         .domain([1,12]).range([70,700]);
     
     var degreeScale = d3.scaleLinear()
-        .domain([0, 95]).range([340,20]);
+        .domain([5, 95]).range([340,20]);
     
     var svg = d3.select('svg');
     
