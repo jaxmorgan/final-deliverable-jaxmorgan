@@ -63,13 +63,15 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scaleDegreeTemp(d.record_max_temp)})
         .attr('opacity', 0.2)
         .style("fill", function(d) {
-            if (d.differ == 'y') {
+            if ((d.date == "7" || d.date == "8" || d.date == "11") && d.city == "HOU") {
+                return "white";
+            } if (d.differ == 'y') {
                 return "teal";
             } else if (d.differ == 'z') {
                 return "gray";
             } else if (d.differ == 'x') {
                 return "pink";
-            }
+            } 
         })
           
         holderTemp.append("text")
@@ -354,7 +356,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             .domain([1,12]).range([825,1500]);
             
         var degreeScaleTemp = d3.scaleLinear()
-            .domain([53, 110]).range([340,20]);
+            .domain([10, 110]).range([340,20]);
             
         var svgTemp = d3.select('svg');
     
