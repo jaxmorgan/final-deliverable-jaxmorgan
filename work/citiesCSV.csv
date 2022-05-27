@@ -1,5 +1,5 @@
 ﻿date,actual_mean_temp,actual_min_temp,actual_max_temp,average_min_temp,average_max_temp,record_min_temp,record_max_temp,record_min_temp_year,record_max_temp_year,actual_precipitation,average_precipitation,record_precipitation,differ,city
-7,77,60,94,54,73,45,94,1948,2014,0,0.03,0.75,y,SEA
+7,77,60,94,54,73,45,100,1948,2014,0,0.03,0.75,y,SEA
 7,70,58,81,54,73,43,93,1954,2015,0,0.03,0.5,y,SEA
 7,64,57,71,54,74,44,92,1954,2015,0,0.03,0.47,y,SEA
 7,66,57,75,54,74,43,92,1949,2015,0,0.03,0.57,y,SEA

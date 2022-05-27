@@ -55,7 +55,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .append("g")
           
         holderTemp.append('circle')
-        .attr("class", "temp2")
+        .attr("class", "record_max_temp")
         .attr('r', 4)
         .attr('cx', function(d, i) { 
             return scaleMonthTemp(d.date);})
@@ -232,7 +232,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     svg.append('text')
         .attr('class', 'title')
         .attr('transform','translate(360,30)')
-        .text('Temperature')
+        .text('Average Temperature')
     
     // **** Functions to call for scaled values ****
 
@@ -354,7 +354,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             .domain([1,12]).range([825,1500]);
             
         var degreeScaleTemp = d3.scaleLinear()
-            .domain([10, 115]).range([340,20]);
+            .domain([53, 110]).range([340,20]);
             
         var svgTemp = d3.select('svg');
     
@@ -424,7 +424,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     
     svgTemp.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1000,405)')
+        .attr('transform','translate(1150,405)')
         .text('Month');
     
     svgTemp.append('g').attr('class', 'y axis')
@@ -439,7 +439,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     svgTemp.append('text')
         .attr('class', 'title')
         .attr('transform','translate(1100,30)')
-        .text('Temperature')
+        .text('Record High Temperatures')
     
 
 
