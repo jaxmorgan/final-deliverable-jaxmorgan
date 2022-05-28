@@ -90,7 +90,6 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     var holder2 = svgPlaceholder2.selectAll("g")
          .data(data)
          .append("g")
-    
     holder2.append('circle')
         .attr("class", "precip")
         .attr('r', 4)
@@ -100,9 +99,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scalePrecip(d.average_precipitation)})
         .attr('opacity', 0.1)
         .style("fill", function(d) {
-            if ((d.date == "7") && d.city == "HOU") {
-                return "white";
-            } if (d.differ == 'y') {
+             if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
                  return "gray";
@@ -295,10 +292,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .domain([1,12]).range([70,700]);
     
      var precipScale = d3.scaleLinear()
-         .domain([0, 0.5]).range([850,80]);
-     
-    var precipScale2 = d3.scaleLinear()
-        .domain([0.03, 0.24]).range([340,20]);
+         .domain([0, 0.3]).range([800,500]);
     
     var svg2 = d3.select('svg');
     
@@ -372,8 +366,8 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .text('Month');
 
      svg2.append('g').attr('class', 'y-axis')
-     .attr('transform', 'translate(55,461)')
-     .call(d3.axisLeft(precipScale2))
+     .attr('transform', 'translate(50,0)')
+     .call(d3.axisLeft(precipScale))
     
     svg2.append('text')
         .attr('class', 'label')
@@ -401,7 +395,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .domain([1,12]).range([825,1500]);
     
      var precipScaleRecordPrecip = d3.scaleLinear()
-         .domain([0.03, 10.0]).range([800,500]);
+         .domain([0, 10.0]).range([800,500]);
     
     var svg3 = d3.select('svg');
     
