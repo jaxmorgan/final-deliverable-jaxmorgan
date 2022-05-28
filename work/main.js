@@ -24,7 +24,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
              if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
-                 return "gray";
+                 return "maroon";
              } else {
                  return "pink";
              }
@@ -71,7 +71,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             if (d.differ == 'y') {
                 return "teal";
             } else if (d.differ == 'z') {
-                return "gray";
+                return "maroon";
             } else if (d.differ == 'x') {
                 return "pink";
             } 
@@ -103,7 +103,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scaleMonth2(d.date);})
         .attr('cy', function(d, i) { 
             return scalePrecip(d.average_precipitation)})
-        .attr('opacity', 0.1)
+        .attr('opacity', 0.2)
         .style("fill", function(d) {
             if (d.record_precipitation <= '0.01') {
                 return "white";
@@ -111,7 +111,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
              if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
-                 return "gray";
+                 return "maroon";
              } else {
                  return "pink";
              }
@@ -157,7 +157,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
-                 return "gray";
+                 return "maroon";
              } else {
                  return "pink";
              }

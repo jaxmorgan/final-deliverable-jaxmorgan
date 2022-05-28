@@ -22,7 +22,7 @@
     <p>This interactive data visualization shows the average temperatures and precipitation logged on different days of each month of the year for three major US cities: Seattle, Houston, and New York. </p>
     <p>Using this interactive data visualization, individuals can understand when and where they should travel around the US based on seasonality and their preferred climates as 
         they relate specifically to temperature and precipitation.</p>
-    <p>The color teal represents Seattle, gray represents Houston, and pink represents New York.</p>
+    <p>The color teal represents Seattle, maroon represents Houston, and pink represents New York.</p>
     <div id="main">
         <svg width="1550" height="900" style="border: 1px solid #777;">
         </svg>
@@ -43,7 +43,7 @@
     
     // Handmade legend
     svg.append("circle").attr("cx", 25).attr("cy", 10).attr("r", 7).style("fill", "teal").attr('transform', 'translate(150, 0)')
-    svg.append("circle").attr("cx", 25).attr("cy",40).attr("r", 7).style("fill", "gray").attr('transform', 'translate(150, 0)')
+    svg.append("circle").attr("cx", 25).attr("cy",40).attr("r", 7).style("fill", "maroon").attr('transform', 'translate(150, 0)')
     svg.append("circle").attr("cx",25).attr("cy",70).attr("r", 7).style("fill", "pink").attr('transform', 'translate(150, 0)')
     svg.append("text").attr("x", 50).attr("y", 10).text("Seattle").style("font-size", "18px").attr("alignment-baseline","middle").attr('transform', 'translate(170, 0)')
     svg.append("text").attr("x", 50).attr("y", 40).text("Houston").style("font-size", "18px").attr("alignment-baseline","middle").attr('transform', 'translate(170,0)')
