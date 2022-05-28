@@ -18,6 +18,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scaleDegree(d.actual_mean_temp)})
         .attr('opacity', 0.2)
         .style("fill", function(d) {
+            if (d.record_precipitation <= '0.01') {
+                return "white";
+            }
              if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
@@ -62,6 +65,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scaleDegreeTemp(d.record_max_temp)})
         .attr('opacity', 0.2)
         .style("fill", function(d) {
+            if (d.record_precipitation <= '0.01') {
+                return "white";
+            }
             if (d.differ == 'y') {
                 return "teal";
             } else if (d.differ == 'z') {
@@ -377,13 +383,13 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     
     svg2.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(10,600) rotate(90)')
+        .attr('transform','translate(6,600) rotate(90)')
         .text('Rainfall (in)');
     
     svg2.append('text')
         .attr('class', 'title')
         .attr('transform','translate(360,475)')
-        .text('Precipitation');
+        .text('Average Precipitation');
 
 
     //SECOND PRECIP PLOTTING
@@ -471,7 +477,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     
     svg3.append('text')
         .attr('class', 'label')
-        .attr('transform','translate(1150,872)')
+        .attr('transform','translate(1160,872)')
         .text('Month');
 
      svg3.append('g').attr('class', 'y-axis')
@@ -572,7 +578,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         
         svgTemp.append('text')
             .attr('class', 'label')
-            .attr('transform','translate(1150,405)')
+            .attr('transform','translate(1160,405)')
             .text('Month');
         
         svgTemp.append('g').attr('class', 'y axis')
@@ -586,7 +592,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         
         svgTemp.append('text')
             .attr('class', 'title')
-            .attr('transform','translate(1100,30)')
+            .attr('transform','translate(1100,20)')
             .text('Record High Temperatures')
 
     
