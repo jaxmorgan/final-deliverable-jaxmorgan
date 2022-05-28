@@ -170,7 +170,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
     
         holder3.append("text")
           .attr("class", "name")
-          .text(function(d) { return d.record_precipitation + ', ' + d.city})
+          .text(function(d) { return d.record_precipitation + ', ' + d.differ})
           .attr("opacity", 0)
           .attr('transform', function(d) { return 'translate(' + scaleMonth3(d.date) + ',' + scalePrecip2(d.record_precipitation) + ')'})
           .on('mouseover', function(d) {
@@ -496,12 +496,12 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
 
 
     //SECOND PRECIP PLOTTING
-    function scaleMonth2(parseMonth) {
-        return monthScale2(parseMonth);
+    function scaleMonth3(parseMonth) {
+        return monthScale3(parseMonth);
     }
     
-    function scalePrecip(average_precipitation) {
-        return precipScale(average_precipitation);
+    function scalePrecip2(average_precipitation) {
+        return precipScale3(average_precipitation);
     }
     
     // **** Code for creating scales, axes and labels ****
@@ -510,7 +510,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .domain([1,12]).range([70,750]);
     
      var precipScale3 = d3.scaleLinear()
-         .domain([0, 0.5]).range([850,80]);
+         .domain([0.03, 0.24]).range([340,20]);
     
     var svg2 = d3.select('svg');
     
@@ -585,7 +585,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
 
      svg2.append('g').attr('class', 'y-axis')
      .attr('transform', 'translate(800,461)')
-     .call(d3.axisLeft(precipScale2))
+     .call(d3.axisLeft(precipScale3))
     
     svg2.append('text')
         .attr('class', 'label')
