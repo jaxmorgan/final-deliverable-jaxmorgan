@@ -22,7 +22,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
                  return "teal";
              } else if (d.differ == 'z') {
                  return "gray";
-             } else if (d.differ == 'x') {
+             } else {
                  return "pink";
              }
          })
@@ -99,6 +99,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scalePrecip(d.average_precipitation)})
         .attr('opacity', 0.1)
         .style("fill", function(d) {
+            if (d.record_precipitation <= '0.01') {
+                return "white";
+            }
              if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
@@ -142,7 +145,10 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scalePrecipRecordPrecip(d.record_precipitation)})
         .attr('opacity', 0.2)
         .style("fill", function(d) {
-             if (d.differ == 'y') {
+             if (d.record_precipitation <= '0.01') {
+                 return "white";
+             }
+            if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
                  return "gray";
