@@ -46,8 +46,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
           .on('mouseout', function(d) {
               d3.select(this.parentNode).select("text").style("opacity", 0)
           })
+        });
 
-
+    temp2 = d3.csv('citiesCSV.csv').then(function(data) {
     //SECOND TEMP
     var svgPlaceholderTemp = d3.select("svg")
     var holderTemp = svgPlaceholderTemp.selectAll("g")
@@ -63,9 +64,12 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scaleDegreeTemp(d.record_max_temp)})
         .attr('opacity', 0.2)
         .style("fill", function(d) {
-            if ((d.date == "7" || d.date == "8" || d.date == "11") && d.city == "HOU") {
-                return "white";
-            } if (d.differ == 'y') {
+            //if ((d.date == "7" || d.date == "8" || d.date == "11") && d.city == "HOU") {
+                //return "white";
+            if (d.differ == 'k') {
+                return "green";
+            }
+            if (d.differ == 'y') {
                 return "teal";
             } else if (d.differ == 'z') {
                 return "gray";
@@ -85,8 +89,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             .on('mouseout', function(d) {
                 d3.select(this.parentNode).select("text").style("opacity", 0)
             })
-
+        });
         
+    precip = d3.csv('citiesCSV.csv').then(function(data) {
     //PRECIPITATION CHART
     var svgPlaceholder2 = d3.select("svg")
     var holder2 = svgPlaceholder2.selectAll("g")
@@ -102,7 +107,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
             return scalePrecip(d.average_precipitation)})
         .attr('opacity', 0.1)
         .style("fill", function(d) {
-             if (d.differ == 'y') {
+            if ((d.date == "7") && d.city == "HOU") {
+                return "white";
+            } if (d.differ == 'y') {
                  return "teal";
              } else if (d.differ == 'z') {
                  return "gray";
@@ -128,8 +135,9 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
          .on('mouseout', function(d) {
               d3.select(this.parentNode).select("text").style("opacity", 0)
           })
+        });
 
-     });
+     
     //here's where my code stops
     
     
