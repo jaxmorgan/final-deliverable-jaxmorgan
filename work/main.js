@@ -137,6 +137,49 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
           })
         });
 
+    precip2 = d3.csv('citiesCSV.csv').then(function(data) {
+    //SECOND PRECIPITATION
+    var svgPlaceholder3 = d3.select("svg")
+    var holder3 = svgPlaceholder3.selectAll("g")
+         .data(data)
+         .append("g")
+    
+    holder3.append('circle')
+        .attr("class", "precip")
+        .attr('r', 4)
+        .attr('cx', function(d, i) { 
+            return scaleMonth3(d.date);})
+        .attr('cy', function(d, i) { 
+            return scalePrecip2(d.record_precipitation)})
+        .attr('opacity', 0.1)
+        .style("fill", function(d) {
+             if (d.differ == 'y') {
+                 return "teal";
+             } else if (d.differ == 'z') {
+                 return "gray";
+             } else {
+                 return "pink";
+             }
+         })
+         .on('mouseover', function(d) {
+             d3.select(this.node).select('circle').style("opacity", 1)
+         })
+         .on('mouseout', function(d) {
+             d3.select(this.node).select('circle').style("opacity", 0.5)
+         })
+    
+        holder3.append("text")
+          .attr("class", "name")
+          .text(function(d) { return d.record_precipitation + ', ' + d.city})
+          .attr("opacity", 0)
+          .attr('transform', function(d) { return 'translate(' + scaleMonth3(d.date) + ',' + scalePrecip2(d.record_precipitation) + ')'})
+          .on('mouseover', function(d) {
+              d3.select(this.parentNode).select("text").style("opacity", 1)
+          })
+         .on('mouseout', function(d) {
+              d3.select(this.parentNode).select("text").style("opacity", 0)
+          })
+        });
      
     //here's where my code stops
     
@@ -245,7 +288,7 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .text('Average Temperature')
     
     // **** Functions to call for scaled values ****
-
+//PRECIP PLOTTING
     function scaleMonth2(parseMonth) {
         return monthScale2(parseMonth);
     }
@@ -450,6 +493,110 @@ temp = d3.csv('citiesCSV.csv').then(function(data) {
         .attr('class', 'title')
         .attr('transform','translate(1100,30)')
         .text('Record High Temperatures')
+
+
+    //SECOND PRECIP PLOTTING
+    function scaleMonth2(parseMonth) {
+        return monthScale2(parseMonth);
+    }
+    
+    function scalePrecip(average_precipitation) {
+        return precipScale(average_precipitation);
+    }
+    
+    // **** Code for creating scales, axes and labels ****
+    
+    var monthScale3 = d3.scaleLinear()
+        .domain([1,12]).range([70,750]);
+    
+     var precipScale3 = d3.scaleLinear()
+         .domain([0, 0.5]).range([850,80]);
+    
+    var svg2 = d3.select('svg');
+    
+    svg2.append('g').attr('class', 'x axis')
+        .attr('transform', 'translate(750,812)')
+        .call(d3.axisBottom(monthScale3).tickFormat(function(d){return d;}));
+
+    svg2.append('text')
+        .attr('class', 'label2')
+        .attr('transform','translate(815,847)')
+        .text('Jan.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(875,847)')
+        .text('Feb.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(935,847)')
+        .text('Mar.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(998,847)')
+        .text('Apr.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1055,847)')
+        .text('May');
+    
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1120,847)')
+        .text('Jun.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1180,847)')
+        .text('Jul.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1240,847)')
+        .text('Aug.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1305,847)')
+        .text('Sept.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1370,847)')
+        .text('Oct.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1425,847)')
+        .text('Nov.');
+
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1490,847)')
+        .text('Dec.');
+    
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(1150,872)')
+        .text('Month');
+
+     svg2.append('g').attr('class', 'y-axis')
+     .attr('transform', 'translate(800,461)')
+     .call(d3.axisLeft(precipScale2))
+    
+    svg2.append('text')
+        .attr('class', 'label')
+        .attr('transform','translate(755,600) rotate(90)')
+        .text('Rainfall (in)');
+    
+    svg2.append('text')
+        .attr('class', 'title')
+        .attr('transform','translate(1100,475)')
+        .text('Record Precipitation');
+
     
 
 
